@@ -49,6 +49,14 @@ config ARCH_MISOC
 	---help---
 		MISOC
 
+config ARCH_LAMBDASOC
+	bool "LAMBDASOC"
+	select ARCH_HAVE_INTERRUPTSTACK
+	select ARCH_HAVE_CUSTOMOPT
+	select ARCH_HAVE_STDARG_H
+	---help---
+		LAMBDASOC
+
 config ARCH_RENESAS
 	bool "Renesas"
 	select ARCH_NOINTC
@@ -130,6 +138,7 @@ config ARCH
 	default "avr"     if ARCH_AVR
 	default "hc"      if ARCH_HC
 	default "mips"    if ARCH_MIPS
+	default "lambdasoc" if ARCH_LAMBDASOC
 	default "misoc"   if ARCH_MISOC
 	default "renesas" if ARCH_RENESAS
 	default "risc-v"  if ARCH_RISCV
@@ -144,6 +153,7 @@ source arch/arm/Kconfig
 source arch/avr/Kconfig
 source arch/hc/Kconfig
 source arch/mips/Kconfig
+source arch/lambdasoc/Kconfig
 source arch/misoc/Kconfig
 source arch/renesas/Kconfig
 source arch/risc-v/Kconfig

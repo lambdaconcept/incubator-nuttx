@@ -716,6 +716,12 @@ config ARCH_BOARD_MISOC_VERILATOR
 	---help---
 		This configuration is port to NuttX running on Verilator.
 
+config ARCH_BOARD_LAMBDASOC_VERILATOR
+	bool "Verilator Lambdasoc demo"
+	depends on ARCH_CHIP_MINERVA
+	---help---
+		This configuration is port to NuttX running on Verilator.
+
 config ARCH_BOARD_MOTEINO_MEGA
 	bool "LowPowerLab MoteinoMEGA"
 	depends on ARCH_CHIP_ATMEGA1284P
@@ -2322,6 +2328,7 @@ config ARCH_BOARD
 	default "metro-m4"                 if ARCH_BOARD_METRO_M4
 	default "micropendous3"            if ARCH_BOARD_MICROPENDOUS3
 	default "mirtoo"                   if ARCH_BOARD_MIRTOO
+	default "lambdasoc"                if ARCH_BOARD_LAMBDASOC_VERILATOR
 	default "misoc"                    if ARCH_BOARD_MISOC_QEMU || ARCH_BOARD_MISOC_VERILATOR
 	default "moteino-mega"             if ARCH_BOARD_MOTEINO_MEGA
 	default "ne64badge"                if ARCH_BOARD_NE64BADGE
@@ -3081,6 +3088,9 @@ source "boards/mips/pic32mz/flipnclick-pic32mz/Kconfig"
 endif
 if ARCH_BOARD_PIC32MZ_STARTERKIT
 source "boards/mips/pic32mz/pic32mz-starterkit/Kconfig"
+endif
+if ARCH_BOARD_LAMBDASOC_VERILATOR
+source "boards/lambdasoc/minerva/lambdasoc/Kconfig"
 endif
 if ARCH_BOARD_MISOC_QEMU || ARCH_BOARD_MISOC_VERILATOR
 source "boards/misoc/lm32/misoc/Kconfig"
