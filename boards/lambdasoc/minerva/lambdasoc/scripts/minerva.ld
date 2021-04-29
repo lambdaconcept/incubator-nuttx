@@ -48,6 +48,12 @@ SECTIONS
         _etext = ABSOLUTE(.);
     } > main_ram
 
+    .init_section : ALIGN(4) {
+        _sinit = ABSOLUTE(.);
+        KEEP(*(.init_array .init_array.*))
+        _einit = ABSOLUTE(.);
+    } > main_ram
+
     _eronly = ABSOLUTE(.);      /* See below                    */
 
     .data : {
