@@ -57,8 +57,7 @@
 
 void minerva_flush_dcache(void)
 {
-#warning "FIX D CACHE FLUSH"
-  asm volatile ("nop\n" "nop\n" "nop\n" "nop\n");
+  asm volatile ("fence.i\n" "nop\n" "nop\n" "nop\n" "nop\n");
 }
 
 /****************************************************************************
