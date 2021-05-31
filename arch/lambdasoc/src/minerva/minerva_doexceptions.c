@@ -84,6 +84,7 @@ uint32_t *minerva_doexception(uint32_t * regs)
         }
       else
         {
+          _alert("PANIC!! Exception %08x\n", mcause);
           while (1);
         }
     }
