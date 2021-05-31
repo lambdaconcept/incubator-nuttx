@@ -101,8 +101,8 @@ int lambdasoc_timer_isr(int irq, void *context, void *arg)
 {
   /* Clear event pending */
 
-  uint32_t ev_pending = getreg32(LAMBDASOC_TIMER_RELOAD);
-  putreg32(ev_pending, LAMBDASOC_TIMER_RELOAD);
+  uint32_t ev_pending = getreg32(LAMBDASOC_TIMER_EV_PENDING);
+  putreg32(ev_pending, LAMBDASOC_TIMER_EV_PENDING);
 
   /* Process timer interrupt */
 
@@ -123,8 +123,8 @@ void up_timer_initialize(void)
 {
   /* Clear event pending */
 
-  uint32_t ev_pending = getreg32(LAMBDASOC_TIMER_RELOAD);
-  putreg32(ev_pending, LAMBDASOC_TIMER_RELOAD);
+  uint32_t ev_pending = getreg32(LAMBDASOC_TIMER_EV_PENDING);
+  putreg32(ev_pending, LAMBDASOC_TIMER_EV_PENDING);
 
   /* Disable timer */
 
