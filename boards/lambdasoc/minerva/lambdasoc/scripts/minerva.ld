@@ -23,11 +23,9 @@ ENTRY(_stext)
 
 MEMORY
 {
-  rom : ORIGIN = 0x00000000, LENGTH = 0x00004000
-  sram : ORIGIN = 0x00004000, LENGTH = 0x00001000
-  /* main_ram : ORIGIN = 0x00017000, LENGTH = 0x02000000 */
-  /* main_ram : ORIGIN = 0x00017000, LENGTH = 0x00080000 */
-  main_ram : ORIGIN = 0x00017000, LENGTH = 0x00040000
+  bios_rom  (rx) : ORIGIN = 0x10000000, LENGTH = 0x00004000
+  sram     (rwx) : ORIGIN = 0x10004000, LENGTH = 0x00001000
+  main_ram (rwx) : ORIGIN = 0x20000000, LENGTH = 0x20000000
 }
 
 SECTIONS
@@ -54,7 +52,7 @@ SECTIONS
         _einit = ABSOLUTE(.);
     } > main_ram
 
-    _eronly = ABSOLUTE(.);      /* See below                    */
+    _eronly = ABSOLUTE(.);
 
     .data : {
         _sdata = ABSOLUTE(.);
@@ -67,7 +65,7 @@ SECTIONS
         _edata = ABSOLUTE(.);
     } > main_ram
 
-    .bss : {            /* BSS              */
+    .bss : {
         _sbss = ABSOLUTE(.);
         *(.bss .bss.*)
         *(.gnu.linkonce.b.*)
@@ -77,7 +75,9 @@ SECTIONS
         . = ALIGN(4);
         _ebss = ABSOLUTE(.);
     } > main_ram
+
     /* Stabs debugging sections.    */
+
     .stab 0 : { *(.stab) }
     .stabstr 0 : { *(.stabstr) }
     .stab.excl 0 : { *(.stab.excl) }
