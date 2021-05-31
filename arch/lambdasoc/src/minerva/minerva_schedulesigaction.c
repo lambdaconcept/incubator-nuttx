@@ -186,7 +186,7 @@ void up_schedule_sigaction(struct tcb_s *tcb, sig_deliver_t sigdeliver)
            */
 
           tcb->xcp.regs[REG_CSR_MEPC] = (uint32_t) minerva_sigdeliver;
-          g_current_regs[REG_CSR_MSTATUS] &= ~CSR_MSTATUS_MIE;
+          tcb->xcp.regs[REG_CSR_MSTATUS] &= ~CSR_MSTATUS_MIE;
 
           sinfo("PC/STATUS Saved: %08x New: %08x/%08x\n",
                 tcb->xcp.saved_epc,
