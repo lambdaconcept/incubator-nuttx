@@ -23,8 +23,8 @@ ENTRY(_stext)
 
 MEMORY
 {
-  bios_rom  (rx) : ORIGIN = 0x10000000, LENGTH = 0x00004000
-  sram     (rwx) : ORIGIN = 0x10004000, LENGTH = 0x00001000
+  bios_rom  (rx) : ORIGIN = 0x10000000, LENGTH = 0x00008000
+  sram     (rwx) : ORIGIN = 0x10008000, LENGTH = 0x00001000
   main_ram (rwx) : ORIGIN = 0x20000000, LENGTH = 0x20000000
 }
 
