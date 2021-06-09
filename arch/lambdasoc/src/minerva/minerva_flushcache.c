@@ -57,7 +57,7 @@
 
 void minerva_flush_dcache(void)
 {
-  asm volatile ("fence.i\n" "nop\n" "nop\n" "nop\n" "nop\n");
+  asm volatile ("fence.i\n");
 }
 
 /****************************************************************************
@@ -70,5 +70,5 @@ void minerva_flush_dcache(void)
 
 void minerva_flush_icache(void)
 {
-  asm volatile ("fence.i\n" "nop\n" "nop\n" "nop\n" "nop\n");
+  asm volatile ("fence.i\n");
 }
