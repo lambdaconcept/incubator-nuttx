@@ -23,9 +23,9 @@ ENTRY(_stext)
 
 MEMORY
 {
-  bios_rom  (rx) : ORIGIN = 0x10000000, LENGTH = 0x00008000
-  sram     (rwx) : ORIGIN = 0x10008000, LENGTH = 0x00001000
-  main_ram (rwx) : ORIGIN = 0x20000000, LENGTH = 0x20000000
+  bios_rom  (rx) : ORIGIN = 0x30000000, LENGTH = 0x00008000
+  sram     (rwx) : ORIGIN = 0x30008000, LENGTH = 0x00001000
+  main_ram (rwx) : ORIGIN = 0x40000000, LENGTH = 0x20000000
 }
 
 SECTIONS
