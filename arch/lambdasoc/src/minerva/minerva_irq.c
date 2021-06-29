@@ -45,6 +45,7 @@
 #include <nuttx/irq.h>
 #include <nuttx/arch.h>
 #include <arch/irq.h>
+#include <arch/minerva/csrdefs.h>
 
 #include "chip.h"
 #include "minerva.h"
@@ -148,7 +149,6 @@ irqstate_t up_irq_enable(void)
 void up_disable_irq(int irq)
 {
   irqstate_t flags;
-
   DEBUGASSERT(irq >= 0 && irq < NR_IRQS);
 
   /* Ignore any attempt to disable software interrupts */
@@ -160,6 +160,14 @@ void up_disable_irq(int irq)
       flags = irq_getmask();
       flags &= ~(1 << irq);
       irq_setmask(flags);
+
+      if (!flags)
+        {
+         /* This was the last external interrupt source. Disable external
+          * interrupts. */
+
+          csrc(mie, CSR_MIE_MEIE);
+        }
     }
 }
 
@@ -185,5 +193,9 @@ void up_enable_irq(int irq)
       flags = irq_getmask();
       flags |= (1 << irq);
       irq_setmask(flags);
+
+      /* Enable external interrupts. */
+
+      csrs(mie, CSR_MIE_MEIE);
     }
 }

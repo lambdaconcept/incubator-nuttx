@@ -77,4 +77,6 @@
 #define CSR_MSTATUS_TSR      (1 << 22)
 #define CSR_MSTATUS_SD       (1 << 31)
 
+#define CSR_MIE_MEIE         (1 << 11)
+
 #endif

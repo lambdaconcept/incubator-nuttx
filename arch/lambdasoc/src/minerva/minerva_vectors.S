@@ -109,8 +109,6 @@
 	sw t0, REG_CSR_MCAUSE(sp)
  .endm
 
-/* restore regs */
-
  .macro RESTORE_REGS
 	lw  ra, REG_X1(a0)
 	lw  sp, REG_X2(a0)
@@ -173,13 +171,6 @@ _reset_handler:
 	addi t0, t0, 4
 	j 1b
 2:
-
-#if 0 /* REVISIT */
-	/* Enable external interrupts */
-
-	li t0, MIE_MEIE
-	csrs mie, t0
-#endif
 
 	call nx_start
 5:	j 5b
